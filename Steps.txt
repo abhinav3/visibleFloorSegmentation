@@ -1,0 +1,26 @@
+1. Started reading methods on robot navigation and detection of free space.
+2. Estimate the hough transofrms or cany edge lines that divide the floor from the walls of the truck.
+3. SLIC  superpixels : https://sci-hub.tw/https://ieeexplore.ieee.org/document/6977445
+4. ISUN : https://github.com/leVirve/lsun-room
+5. http://cvgl.stanford.edu/papers/delay-robust-spatial.pdf
+6. DeepLab resent : https://github.com/hellochick/Indoor-segmentation
+
+I'm facing issues for python, numpy, tensorflow version incompatibility etc. I've resolved them.
+This network can be fine tuned further for truck segmentation.
+
+7. Lane detection : https://medium.com/@mrhwick/simple-lane-detection-with-opencv-bfeb6ae54ec0
+8. https://medium.com/@galen.ballew/opencv-lanedetection-419361364fc0
+9. https://github.com/galenballew/SDC-Lane-and-Vehicle-Detection-Tracking
+
+
+Other tend to use Depth information either by using RGB-D camera of two shifted images simultaneously to use stereo to get the depth cues.
+Hence for using a single 2d image we can use traditional hough transformation and canny edges to decide the lines and find the corners as well.
+Or use already trained deep learning methods for 2d image indoor segmentation.
+
+The lines denoting the lane will tend to extend from the foreground of an image into the background along paths that are angled slightly inwards
+
+
+PipeLine:
+1. Center the image so that ceiling and floor parts are equally visible for the reference.
+2. Can either use hand engineered features like canny edge and hough lines. 
+3. Or use segmentation models for indoor segmentation (MIT Dataset : http://sceneparsing.csail.mit.edu/). (classes are : ceiling, walls, floor) and get the percentage of vacant ceiling be finding ration of floor pixels w.r.t ceiling pixels. This network can be further tuned with the segmentations of truck.
