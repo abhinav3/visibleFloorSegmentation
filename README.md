@@ -1,1 +1,2 @@
 # visibleFloorSegmentation
+![decode](/corners.jpg)
